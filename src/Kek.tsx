@@ -1,14 +1,6 @@
-import {
-  FetchReducerProps,
-  RootReducerProps,
-  SearchStateProps,
-} from './schemas/storeTypes';
+import {FetchReducerProps, RootReducerProps, SearchStateProps} from './schemas/storeTypes';
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  addToSaved,
-  getQuery,
-  resetSuggestion,
-} from './store/actions/searchActions';
+import {addToSaved, getQuery, resetSuggestion} from './store/actions/searchActions';
 import {startSub, stopSub} from './store/actions/socketActions';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -21,9 +13,7 @@ import {toggleModal} from './store/actions/toggleActions';
 function Kek() {
   const dispatch = useDispatch();
 
-  const data = useSelector(
-    (state: RootReducerProps) => state.fetchReducer.data
-  );
+  const data = useSelector((state: RootReducerProps) => state.fetchReducer.data);
   const isModalOpen = useSelector(
     (state: RootReducerProps): boolean => state.toggleReducer.isModalOpen
   );
@@ -68,9 +58,7 @@ function Kek() {
               result.map((item: PostType) => {
                 return (
                   <h2 key={item.id}>
-                    <button onClick={() => dispatch(addToSaved(item))}>
-                      get by id
-                    </button>
+                    <button onClick={() => dispatch(addToSaved(item))}>get by id</button>
                     {item.title}
                   </h2>
                 );

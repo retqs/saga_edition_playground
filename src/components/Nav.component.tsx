@@ -16,11 +16,14 @@ const Navbar = () => {
               <Dropdown.Item componentClass={Link} to='/saved' eventKey='3-1'>
                 SAVED
               </Dropdown.Item>
-              <Dropdown.Item componentClass={Link} to='/sort' eventKey='3-1'>
+              <Dropdown.Item componentClass={Link} to='/sort' eventKey='3-2'>
                 Sort table
               </Dropdown.Item>
-              <Dropdown.Item componentClass={Link} to='/auth' eventKey='3-1'>
+              <Dropdown.Item componentClass={Link} to='/auth' eventKey='3-3'>
                 Auth flow
+              </Dropdown.Item>
+              <Dropdown.Item componentClass={Link} to='/all' eventKey='3-4'>
+                Stats currency
               </Dropdown.Item>
             </Dropdown>
             <Dropdown eventKey='4' title='Settings' icon={<Icon icon='gear-circle' />}>

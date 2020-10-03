@@ -1,5 +1,6 @@
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
+import All from './components/All.container';
 import AuthFlow from './components/AuthFlow.container';
 import Cart from './components/Cart.container';
 import {Container} from 'rsuite';
@@ -19,6 +20,7 @@ const RootRouter: React.FunctionComponent<any> = () => {
             <Route path='/saved' component={Cart} exact></Route>
             <Route path='/sort' component={Sort} exact></Route>
             <Route path='/auth' component={AuthFlow} exact></Route>
+            <Route path='/all' component={All} exact></Route>
           </Switch>
         </Container>
       </Container>

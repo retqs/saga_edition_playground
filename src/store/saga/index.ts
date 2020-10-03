@@ -1,4 +1,5 @@
 import {all, fork} from 'redux-saga/effects';
+import {watchAllSaga, watchSocketFlow} from './statsSaga';
 
 import {socketRootSaga} from './socketSaga';
 import {watchAndLog} from './loggerSaga';
@@ -19,5 +20,7 @@ export default function* rootSaga() {
     fork(watchSortData),
     fork(watchAuthFlow),
     fork(watchUndo),
+    fork(watchAllSaga),
+    fork(watchSocketFlow)
   ]);
 }

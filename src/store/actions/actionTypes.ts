@@ -33,4 +33,10 @@ export enum actionTypes {
   SIGN_UP = 'auth/SIGN_UP',
   AUTH_ERROR = 'auth/AUTH_ERROR',
   LOGOUT = 'auth/LOGOUT',
+
+  REQUEST_ONE = 'test/ONE',
+  REQUEST_TWO = 'test/TWO',
+  REQUEST_THREE = 'test/THREE',
+
+  SET_CURRENCY = 'stats/SET_CURRENCY',
 }

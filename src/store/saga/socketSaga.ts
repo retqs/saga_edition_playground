@@ -10,33 +10,31 @@ function connect() {
 
   return new Promise((res, rej) => {
     socket.on('connect', () => {
-      socket.emit('messages');
+      socket.emit('currencyChange');
       res({socket});
     });
-
     socket.on('connect_error', () => {
-      console.log('something went wront /saga/socketSaga.ts');
       rej(new Error('ws:connect_failed'));
     });
   }).catch((error) => ({socket, error}));
 }
 
-function subscribe(socket) {
+function subscribe(socket: any) {
   return eventChannel((emit) => {
-    socket.on('messages', (message: any) => {
+    socket.on('currencyChange', (message: any) => {
       console.log(message, 'message subcribe method socket.on(currency)');
-      // some action instead of clg
+      // -------------------some action instead of clg f!K!J:L!KJ:L!KJ@:LK!J@:!K@J@
       emit(() => console.log('emitted'));
     });
 
-    socket.on('disconnect', (e) => {
+    socket.on('disconnect', () => {
       console.log('disconnected');
     });
     return () => {};
   });
 }
 
-function* read(socket) {
+function* read(socket: any) {
   const channel = yield call(subscribe, socket);
 
   while (true) {
@@ -45,9 +43,13 @@ function* read(socket) {
   }
 }
 
+function* handleIO(socket: any) {
+  yield fork(read, socket);
+}
+
 function* flow() {
   while (true) {
-    yield take(actionTypes.START_SOCKET_SUBSCRIPTION);
+    yield take(actionTypes.AUTH_ERROR);
     const {socket, error} = yield call(connect);
 
     if (socket) {
@@ -60,10 +62,6 @@ function* flow() {
       console.log('error while connecting');
     }
   }
-}
-
-function* handleIO(socket: any) {
-  yield fork(read, socket);
 }
 
 export function* socketRootSaga() {

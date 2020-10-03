@@ -8,9 +8,7 @@ import {startFetch} from '../actions/fetchUsers';
 // fork - non-blocking call on fn,takes in fn and args that will be passed in fn
 
 async function getData(): Promise<PostType[]> {
-  return await fetch('https://jsonplaceholder.typicode.com/posts').then((d) =>
-    d.json()
-  );
+  return await fetch('https://jsonplaceholder.typicode.com/posts').then((d) => d.json());
 }
 
 function* fetchData(action: ActionProps) {
@@ -23,6 +21,5 @@ function* fetchData(action: ActionProps) {
 }
 
 export function* watchFetchData(props: any) {
-  console.log(props);
   yield takeLatest(actionTypes.FETCH_START, fetchData);
 }

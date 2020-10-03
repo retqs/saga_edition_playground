@@ -7,6 +7,7 @@ import {persistReducer} from 'redux-persist';
 import searchReducer from './searchReducer';
 import sessionStorage from 'redux-persist/lib/storage/session'; // sessionStorage
 import sortReducer from './sortReducer';
+import statsReducer from './statsReducer';
 import storage from 'redux-persist/lib/storage'; // localStorage
 import toggleReducer from './toggleReducer';
 
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   searchReducer,
   toggleReducer,
   sortReducer,
+  statsReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
